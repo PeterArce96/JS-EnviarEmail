@@ -1,6 +1,13 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    const email = {
+        email: '',
+        asunto: '',
+        mensaje: ''
+    }
+    console.log(email);
+
     // Seleccionar los elementoss del interfaz
     const inputEmail = document.querySelector('#email');
     const inputAsunto = document.querySelector('#asunto');
@@ -27,6 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         limpiarAlerta(e.target.parentElement);
+
+        // Asignar los valores
+        email[e.target.name] = e.target.value.trim().toLowerCase();
+        
+        // Comprobar el objeto de email
+        comprobarEmail();
     }
 
     function mostrarAlerta(mensaje, referencia) {
@@ -54,5 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ 
         const resultado = regex.test(email); //test() --> método para expresión regular, true o false
         return resultado;
+    }
+
+    function comprobarEmail() {
+        console.log(Object.values(email).includes(''));
     }
 });
