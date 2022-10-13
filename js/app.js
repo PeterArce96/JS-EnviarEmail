@@ -17,10 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validar(e) {
         if (e.target.value.trim() === '') { //trim()-para eliminar espacios en blanco
-            console.log('Vacío');
+            mostrarAlerta();
         } else {
             console.log('Hay algo');
         }
+    }
+
+    function mostrarAlerta() {
+        // Generar alerta en HTML
+        const error = document.createElement('p');
+        error.textContent = 'Hubo un error';
+        console.log(error);
     }
     
 });
