@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     inputMensaje.addEventListener('blur', validar);
 
     function validar(e) {
-        console.log(e.target.value);
+        if (e.target.value.trim() === '') { //trim()-para eliminar espacios en blanco
+            console.log('Vacío');
+        } else {
+            console.log('Hay algo');
+        }
     }
     
 });
