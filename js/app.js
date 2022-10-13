@@ -20,19 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (e.target.value.trim() === '') { //trim()-para eliminar espacios en blanco
             mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
-        } else {
-            console.log('Hay algo');
+            return;
         }
+
+        limpiarAlerta(e.target.parentElement);
     }
 
     function mostrarAlerta(mensaje, referencia) {
-        // Comprueba si ya existe una alerta
-        const alerta = referencia.querySelector('.bg-red-600');
-        if (alerta) {
-            alerta.remove();
-        } else {
-            
-        }
+        limpiarAlerta(referencia);
 
         // Generar alerta en HTML
         const error = document.createElement('p');
@@ -43,4 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
         referencia.appendChild(error);
     }
     
+    function limpiarAlerta(referencia) {
+        // Comprueba si ya existe una alerta
+        const alerta = referencia.querySelector('.bg-red-600');
+        if (alerta) {
+            alerta.remove();
+        }
+    }
 });
