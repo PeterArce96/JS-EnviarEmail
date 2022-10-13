@@ -7,7 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputMensaje = document.querySelector('#mensaje');
 
     // Asignar eventos
-    inputEmail.addEventListener('blur', function(e) {
-        console.log(e.target.value); //acceder a lo que se escribe dentro del input
-    });
+    // inputEmail.addEventListener('blur', function(e) {
+    //     console.log(e.target.value); //acceder a lo que se escribe dentro del input
+    // });
+
+    inputEmail.addEventListener('blur', validar);
+    inputAsunto.addEventListener('blur', validar);
+    inputMensaje.addEventListener('blur', validar);
+
+    function validar(e) {
+        console.log(e.target.value);
+    }
+    
 });
