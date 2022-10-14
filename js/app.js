@@ -38,6 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         spinner.classList.add('flex');
         spinner.classList.remove('hidden');
+
+        setTimeout(() => {
+            spinner.classList.remove('flex');
+            spinner.classList.add('hidden');
+            
+            resetFormulario();
+        }, 3000);
     }
 
     function validar(e) {
