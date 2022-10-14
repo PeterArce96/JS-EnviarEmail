@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formulario = document.querySelector('#formulario');
     const btnSubmit = document.querySelector('#formulario button[type="submit"]');
     const btnReset = document.querySelector('#formulario button[type="reset"]');
+    const spinner = document.querySelector('#spinner');
 
     // Asignar eventos
     // inputEmail.addEventListener('blur', function(e) {
@@ -24,17 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
     inputAsunto.addEventListener('input', validar);
     inputMensaje.addEventListener('input', validar);
 
+    formulario.addEventListener('submit', enviarEmail);
+
     btnReset.addEventListener('click', function(e) {
         e.preventDefault();
 
-        // Reiniciar el objeto
-        email.email = '';
-        email.asunto = '';
-        email.mensaje = '';
+        resetFormulario();
+    });
 
-        formulario.reset();
-        comprobarEmail();
-    })
+    function enviarEmail(e) {
+        e.preventDefault();
+
+        spinner.classList.add('flex');
+        spinner.classList.remove('hidden');
+    }
 
     function validar(e) {
 
@@ -89,11 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function comprobarEmail() {
         if(Object.values(email).includes('')){
             btnSubmit.classList.add('opacity-50');
-            btnSubmit.disable = "true";
+            btnSubmit.disabled = true;
             return;
         }
         btnSubmit.classList.remove('opacity-50');
-        btnSubmit.disable = "false";
+        btnSubmit.disabled = false;
         
+    }
+    function resetFormulario() {
+        // Reiniciar el objeto
+        email.email = '';
+        email.asunto = '';
+        email.mensaje = '';
+
+        formulario.reset();
+        comprobarEmail();
     }
 });
